@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<h1>The Clubhouse Wall</h1>
+<p class="subtitle">
+  <% if (currentUser && (currentUser.membership_status || currentUser.is_admin)) { %>
+    You're a member &mdash; you can see who wrote what, and when.
+  <% } else { %>
+    Anyone can read these stories, but only members know who wrote them.
+  <% } %>
+</p>
+
+<% const canSeeAuthor = currentUser && (currentUser.membership_status || currentUser.is_admin); %>
+
+<% if (!messages.length) { %>
+  <p class="empty-state">No messages yet. <% if (currentUser) { %><a href="/messages/new">Be the first to write one.</a><% } %></p>
+<% } %>
+
+<ul class="message-list">
+  <% messages.forEach(function(message) { %>
+    <li class="message-card">
+      <div class="message-header">
+        <h2><%= message.title %></h2>
+        <% if (currentUser && currentUser.is_admin) { %>
+          <form class="inline-form" action="/messages/<%= message.id %>/delete" method="POST"
+                onsubmit="return confirm('Delete this message permanently?');">
+            <button type="submit" class="link-button danger">Delete</button>
+          </form>
+        <% } %>
+      </div>
+      <p class="message-text"><%= message.text %></p>
+      <p class="message-meta">
+        <% if (canSeeAuthor) { %>
+          by <strong><%= message.author_first_name %> <%= message.author_last_name %></strong>
+          &middot; <%= new Date(message.timestamp).toLocaleString() %>
+        <% } else { %>
+          by <em>a mysterious club member</em>
+        <% } %>
+      </p>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer') %>

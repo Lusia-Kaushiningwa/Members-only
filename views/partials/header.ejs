@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members Only</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">🕵️ Members Only</a>
+    <nav>
+      <% if (currentUser) { %>
+        <span class="greeting">
+          Hi, <%= currentUser.first_name %>
+          <% if (currentUser.is_admin) { %><span class="badge badge-admin">admin</span><% } %>
+          <% if (currentUser.membership_status) { %><span class="badge badge-member">member</span><% } %>
+        </span>
+        <a href="/messages/new">Create a message</a>
+        <% if (!currentUser.membership_status && !currentUser.is_admin) { %>
+          <a href="/join">Join the club</a>
+        <% } %>
+        <% if (!currentUser.is_admin) { %>
+          <a href="/become-admin">Become admin</a>
+        <% } %>
+        <form class="inline-form" action="/logout" method="POST">
+          <button type="submit" class="link-button">Log out</button>
+        </form>
+      <% } else { %>
+        <a href="/sign-up">Sign up</a>
+        <a href="/login">Log in</a>
+      <% } %>
+    </nav>
+  </header>
+
+  <main class="container">
+    <% if (typeof successMessages !== 'undefined' && successMessages.length) { %>
+      <% successMessages.forEach(function(msg) { %>
+        <div class="flash flash-success"><%= msg %></div>
+      <% }) %>
+    <% } %>
+    <% if (typeof errorMessages !== 'undefined' && errorMessages.length) { %>
+      <% errorMessages.forEach(function(msg) { %>
+        <div class="flash flash-error"><%= msg %></div>
+      <% }) %>
+    <% } %>

@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<h1>Join the club</h1>
+<p>Know the secret passcode? Enter it below to become a member and unlock author names on every message.</p>
+
+<% if (error) { %>
+  <ul class="error-list"><li><%= error %></li></ul>
+<% } %>
+
+<form class="form" action="/join" method="POST" novalidate>
+  <div class="form-row">
+    <label for="passcode">Secret passcode</label>
+    <input type="password" id="passcode" name="passcode" required autofocus />
+  </div>
+  <button type="submit" class="btn">Unlock membership</button>
+</form>
+
+<%- include('partials/footer') %>

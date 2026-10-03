@@ -1,0 +1,219 @@
+:root {
+  --ink: #1c1c1e;
+  --paper: #faf7f2;
+  --accent: #7c3aed;
+  --accent-dark: #5b21b6;
+  --border: #e5e0d8;
+  --danger: #b91c1c;
+  --success: #15803d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--ink);
+  color: #fff;
+}
+
+.site-header .brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-header nav a,
+.link-button {
+  color: #f4f0ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-header nav a:hover,
+.link-button:hover {
+  text-decoration: underline;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.link-button.danger {
+  color: #fca5a5;
+}
+
+.greeting {
+  color: #d4cff2;
+  font-size: 0.9rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  margin-left: 0.35rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-admin { background: #fbbf24; color: #78350f; }
+.badge-member { background: #34d399; color: #064e3b; }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+h1 { margin-top: 0; }
+
+.subtitle { color: #555; }
+
+.flash {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.flash-success { background: #dcfce7; color: var(--success); }
+.flash-error { background: #fee2e2; color: var(--danger); }
+
+.error-list {
+  background: #fee2e2;
+  color: var(--danger);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-row-checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-row label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="password"],
+.form-row textarea {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.btn {
+  align-self: flex-start;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--accent-dark); }
+
+.message-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.3rem;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.message-header h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.message-text {
+  white-space: pre-wrap;
+  margin: 0 0 0.6rem;
+}
+
+.message-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+.empty-state { color: #777; }
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.site-footer a { color: #888; }
+
+.error-details {
+  background: #111;
+  color: #eee;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h1>Create a new message</h1>
+
+<% if (errors && errors.length) { %>
+  <ul class="error-list">
+    <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<form class="form" action="/messages/new" method="POST" novalidate>
+  <div class="form-row">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="<%= formData.title || '' %>" required />
+  </div>
+
+  <div class="form-row">
+    <label for="text">Your story</label>
+    <textarea id="text" name="text" rows="8" required><%= formData.text || '' %></textarea>
+  </div>
+
+  <button type="submit" class="btn">Post anonymously</button>
+</form>
+
+<%- include('partials/footer') %>

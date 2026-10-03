@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<h1>Become an admin</h1>
+<p>Enter the admin passcode to gain the power to delete messages.</p>
+
+<% if (error) { %>
+  <ul class="error-list"><li><%= error %></li></ul>
+<% } %>
+
+<form class="form" action="/become-admin" method="POST" novalidate>
+  <div class="form-row">
+    <label for="passcode">Admin passcode</label>
+    <input type="password" id="passcode" name="passcode" required autofocus />
+  </div>
+  <button type="submit" class="btn">Unlock admin powers</button>
+</form>
+
+<%- include('partials/footer') %>

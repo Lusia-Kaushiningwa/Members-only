@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+
+<h1>Sign up</h1>
+
+<% if (errors && errors.length) { %>
+  <ul class="error-list">
+    <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<form class="form" action="/sign-up" method="POST" novalidate>
+  <div class="form-row">
+    <label for="firstName">First name</label>
+    <input type="text" id="firstName" name="firstName" value="<%= formData.firstName || '' %>" required />
+  </div>
+
+  <div class="form-row">
+    <label for="lastName">Last name</label>
+    <input type="text" id="lastName" name="lastName" value="<%= formData.lastName || '' %>" required />
+  </div>
+
+  <div class="form-row">
+    <label for="email">Email (used as your username)</label>
+    <input type="email" id="email" name="email" value="<%= formData.email || '' %>" required />
+  </div>
+
+  <div class="form-row">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" minlength="8" required />
+  </div>
+
+  <div class="form-row">
+    <label for="confirmPassword">Confirm password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" minlength="8" required />
+  </div>
+
+  <div class="form-row form-row-checkbox">
+    <input type="checkbox" id="isAdmin" name="isAdmin" <%= formData.isAdmin ? 'checked' : '' %> />
+    <label for="isAdmin">Sign up as an admin (for demo purposes)</label>
+  </div>
+
+  <button type="submit" class="btn">Create account</button>
+</form>
+
+<p>Already have an account? <a href="/login">Log in</a></p>
+
+<%- include('partials/footer') %>
